@@ -16,7 +16,7 @@
 	"build": {
 		"appId": "com.button-panel-installer.ElectronAutoUpdate",
 		"buildDependenciesFromSource": true,
-		"productName": "buttonpanel",
+		"productName": "button-panel",
 		"asar": true,
 		"files": [],
 		"extraFiles": {
@@ -39,7 +39,7 @@
 		"nsis": {
 			"installerIcon": "infra/images/icon.ico",
 			"uninstallerIcon": "infra/images/icon.ico",
-			"uninstallDisplayName": "s3lite",
+			"uninstallDisplayName": "button-panel",
 			"oneClick": false,
 			"allowToChangeInstallationDirectory": false,
 			"perMachine": true,
