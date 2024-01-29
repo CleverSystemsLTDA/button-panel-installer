@@ -16,7 +16,7 @@
 	"build": {
 		"appId": "com.button-panel-installer.ElectronAutoUpdate",
 		"buildDependenciesFromSource": true,
-		"productName": "buttonpanel",
+		"productName": "button-panel",
 		"asar": true,
 		"files": [],
 		"extraFiles": {
