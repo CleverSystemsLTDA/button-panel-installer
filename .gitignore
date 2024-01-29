@@ -1,0 +1,8 @@
+package-lock.json
+node_modules/
+build/
+dist/
+
+
+electron-builder.yml
+dev-app-update.yml

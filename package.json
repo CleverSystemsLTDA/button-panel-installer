@@ -1,0 +1,68 @@
+{
+	"name": "button-panel-installer",
+	"version": "1.2.0",
+	"description": "Painel de botões para sistemas de senha.",
+	"main": "src/main.js",
+	"scripts": {
+		"start": "electron .",
+		"build": "sucrase ./src -d ./build --transforms imports",
+		"dist": "electron-builder",
+		"publish": "electron-builder build --win --publish always"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CleverSystemsLTDA/button-panel-installer.git"
+	},
+	"build": {
+		"appId": "com.button-panel-installer.ElectronAutoUpdate",
+		"buildDependenciesFromSource": true,
+		"productName": "buttonpanel",
+		"asar": true,
+		"files": [],
+		"extraFiles": {
+			"from": "public/",
+			"to": "."
+		},
+		"win": {
+			"artifactName": "${productName}-${version}.${ext}",
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				}
+			],
+			"icon": "infra/images/icon.ico"
+		},
+		"nsis": {
+			"installerIcon": "infra/images/icon.ico",
+			"uninstallerIcon": "infra/images/icon.ico",
+			"uninstallDisplayName": "s3lite",
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": false,
+			"perMachine": true,
+			"include": "installer.nsh",
+			"runAfterFinish": false
+		}
+	},
+	"keywords": [],
+	"author": "CleverSystemsLTDA",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/CleverSystemsLTDA/button-panel-installer/issues"
+	},
+	"homepage": "https://github.com/CleverSystemsLTDA/button-panel-installer#readme",
+	"devDependencies": {
+		"electron": "^27.0.2",
+		"electron-builder": "^24.6.4"
+	},
+	"dependencies": {
+		"dotenv": "^16.3.1",
+		"electron-progressbar": "^2.1.0",
+		"electron-updater": "^6.1.4",
+		"eslint": "^8.52.0",
+		"sucrase": "^3.34.0"
+	}
+}

@@ -1,0 +1,8 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": "5000",
+    "buscaconfig": "1",
+    "ultimoconfigid": "000"
+  }
+}
