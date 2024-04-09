@@ -1,8 +1,11 @@
 {
   "server": {
-    "host": "localhost",
+    "host": "127.0.0.1",
     "port": "5000",
     "buscaconfig": "1",
     "ultimoconfigid": "000"
+  },
+  "panel": {
+    "isDesktop": "1"
   }
 }
