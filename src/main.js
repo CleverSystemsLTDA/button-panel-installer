@@ -98,12 +98,15 @@ function updaterListeners() {
   });
 
   autoUpdater.on("error", (message) => {
-    dialog.showMessageBox(mainWindow, {
-      type: "error",
-      title: "Erro em att",
-      message: `${message}`,
-      buttons: ["OK"],
-    });
+    /*  dialog.showMessageBox(mainWindow, {
+       type: "error",
+       title: "Erro em att",
+       message: `${message}`,
+       buttons: ["OK"],
+     }); */
+    log.info('Erro em buscar atualização');
+    log.info(message);
+    openApplication();
   });
 }
 
