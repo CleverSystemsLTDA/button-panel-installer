@@ -1,6 +1,6 @@
 {
 	"name": "button-panel-installer",
-	"version": "1.2.0",
+	"version": "1.4.2-latest",
 	"description": "Painel de botões para sistemas de senha.",
 	"main": "src/main.js",
 	"scripts": {
@@ -19,10 +19,16 @@
 		"productName": "button-panel",
 		"asar": true,
 		"files": [],
-		"extraFiles": {
-			"from": "public/",
-			"to": "."
-		},
+		"extraFiles": [
+			{
+				"from": "public/",
+				"to": "."
+			},
+			{
+				"from": "src/update.json",
+				"to": "."
+			}
+		],
 		"win": {
 			"artifactName": "${productName}-${version}.${ext}",
 			"target": [
@@ -40,9 +46,10 @@
 			"installerIcon": "infra/images/icon.ico",
 			"uninstallerIcon": "infra/images/icon.ico",
 			"uninstallDisplayName": "button-panel",
-			"oneClick": false,
+			"oneClick": true,
 			"allowToChangeInstallationDirectory": false,
 			"perMachine": true,
+			"allowElevation": true,
 			"include": "installer.nsh",
 			"runAfterFinish": false
 		}
@@ -60,6 +67,7 @@
 	},
 	"dependencies": {
 		"dotenv": "^16.3.1",
+		"electron-log": "^5.1.2",
 		"electron-progressbar": "^2.1.0",
 		"electron-updater": "^6.1.4",
 		"eslint": "^8.52.0",
