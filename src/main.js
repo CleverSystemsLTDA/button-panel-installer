@@ -33,32 +33,6 @@ function writeJson(json) {
   fs.writeFileSync(updateJsonFile, JSON.stringify(json));
 }
 
-/* async function checkUpdate() {
-  let progressBar = new ProgressBar({
-    indeterminate: false,
-    text: "Baixando atualizações...",
-    detail: "Aguarde",
-  });
-  progressBar
-    .on("completed", function () {
-      progressBar.detail = "Atualização finalizada. Finalizando...";
-    })
-    .on("aborted", function (value) {
-      console.info(`aborted... ${value}`);
-    })
-    .on("progress", function (value) {
-      progressBar.detail = `Baixado ${value.toFixed(2)}% de ${
-        progressBar.getOptions().maxValue
-      }%...`;
-    });
-
-  setInterval(function () {
-    if (!progressBar.isCompleted()) {
-      progressBar.value = downloadPercent;
-    }
-  }, 20);
-} */
-
 function updaterListeners() {
   autoUpdater.on("update-available", (info) => {
     const arrVersion = info.version.split('-');
@@ -98,12 +72,6 @@ function updaterListeners() {
   });
 
   autoUpdater.on("error", (message) => {
-    /*  dialog.showMessageBox(mainWindow, {
-       type: "error",
-       title: "Erro em att",
-       message: `${message}`,
-       buttons: ["OK"],
-     }); */
     log.info('Erro em buscar atualização');
     log.info(message);
     openApplication();
@@ -111,6 +79,8 @@ function updaterListeners() {
 }
 
 function openApplication() {
+  updateJson.version = app.getVersion();
+  writeJson(updateJson);
   log.info(`Abrindo Sistema ButtonPanel...`);
   child = execFile(require.resolve(path));
 
@@ -127,7 +97,7 @@ app.whenReady().then(async () => {
   autoUpdater.autoInstallOnAppQuit = false;
   autoUpdater.allowDowngrade = true;
   autoUpdater.allowPrerelease = true;
-  autoUpdater.channel = 'latest';
+  autoUpdater.channel = 'alpha';
 
   log.info(`Version App: ${app.getVersion()}`);
   log.info(`Channel: ${autoUpdater.channel}`);
@@ -135,11 +105,6 @@ app.whenReady().then(async () => {
   createWindow();
   updaterListeners();
   const resultUpdater = await autoUpdater.checkForUpdatesAndNotify();
-  /* if (resultUpdater !== null) {
-    if (resultUpdater.versionInfo.version !== app.getVersion()) {
-      return;
-    }
-  } */
 
   if (updateJson.updatedownloaded === 0) {
     openApplication();
