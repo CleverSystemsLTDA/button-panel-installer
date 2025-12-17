@@ -1,6 +1,6 @@
 {
 	"name": "button-panel-installer",
-	"version": "1.5.2-alpha",
+	"version": "1.5.3-alpha",
 	"description": "Painel de botões para sistemas de senha.",
 	"main": "src/main.js",
 	"scripts": {
