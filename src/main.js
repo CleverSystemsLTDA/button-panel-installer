@@ -336,11 +336,6 @@ app.whenReady().then(async () => {
   
   try {
     const resultUpdater = await autoUpdater.checkForUpdatesAndNotify();
-
-    // Se updatedownloaded for 0, abre a aplicação
-    if (updateJson.updatedownloaded === 0) {
-      openApplication();
-    }
   } catch (error) {
     log.error("Erro ao verificar atualizações:", error);
     openApplication(); // Garante que a aplicação abra mesmo se a verificação falhar
