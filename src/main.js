@@ -296,9 +296,15 @@ app.whenReady().then(async () => {
   log.info('App starting...');
   autoUpdater.autoDownload = false;
   autoUpdater.autoInstallOnAppQuit = false;
-  autoUpdater.allowDowngrade = true;
   autoUpdater.allowPrerelease = true;
-  autoUpdater.channel = 'test';
+  // 2.x (licenciamento): v2alpha, v2beta, v2. Canal proprio para a 1.x (alpha, beta,
+  // latest) nao enxergar a 2.x; a 2.0 entra a mao, com a ativacao da licenca.
+  // Sem "-" no nome: o update-available le o canal com split('-')[1].
+  autoUpdater.channel = 'v2alpha';
+  // Depois do channel: o setter do channel liga allowDowngrade = true sozinho.
+  // false: uma maquina instalada a mao com uma versao nova nao pode voltar
+  // sozinha para uma versao menor do mesmo canal.
+  autoUpdater.allowDowngrade = false;
 
   log.info(`Version App: ${app.getVersion()}`);
   log.info(`Channel: ${autoUpdater.channel}`);
